@@ -17,9 +17,9 @@ public class CharacterCount {
         String filename = args[0];
         int count = 0;
 
-        CompletionService<Integer> cs = new ExecutorCompletionService(Executors.newFixedThreadPool(5));
+        CompletionService<Integer> cs = new ExecutorCompletionService<>(Executors.newFixedThreadPool(5));
         try (BufferedReader textFile = new BufferedReader(new FileReader(filename))) {
-            String line = null;
+            String line;
 
             while ((line = textFile.readLine()) != null) {
                 StringLengthCallable slc = new StringLengthCallable(line);
